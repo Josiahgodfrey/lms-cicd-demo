@@ -33,52 +33,33 @@ vi.mock('axios', () => ({
 
 describe('App Component', () => {
   it('renders the LMS application', () => {
-    render(
-     <App />
-    )
-    
-    // Check if the navigation is rendered
-    expect(screen.getByText(/LMS Dashboard/i)).toBeInTheDocument()
-  })
+    render(<App />);
+    expect(screen.getByText(/LMS Dashboard/i)).toBeInTheDocument();
+  });
 
   it('renders navigation links', () => {
-    render(
-      <App />
-    )
-    
-    // Check if navigation links are present
-    expect(screen.getByText(/Dashboard/i)).toBeInTheDocument()
-    expect(screen.getByText(/Users/i)).toBeInTheDocument()
-  })
+    render(<App />);
+    expect(screen.getByText(/Dashboard/i)).toBeInTheDocument();
+    expect(screen.getByText(/Users/i)).toBeInTheDocument();
+  });
 
   it('renders footer information', () => {
-    render(
-      <App />
-    )
-    
-    // Check if footer is rendered
-    expect(screen.getByText(/Learning Management System/i)).toBeInTheDocument()
-    expect(screen.getByText(/Health Check/i)).toBeInTheDocument()
-  })
-})
+    render(<App />);
+    expect(screen.getByText(/Learning Management System/i)).toBeInTheDocument();
+    expect(screen.getByText(/Health Check/i)).toBeInTheDocument();
+  });
+});
 
 describe('Dashboard Component', () => {
   it('shows loading state initially', () => {
     render(<App />);
-    // Check for loading message
     expect(screen.getByText(/Loading LMS Data/i)).toBeInTheDocument();
   });
 });
-    
-    // Check for loading message
-    expect(screen.getByText(/Loading LMS Data/i)).toBeInTheDocument()
-  })
-})
 
 describe('User Management Component', () => {
   it('renders user creation form when navigating to /users', () => {
     render(<App />);
-    // Check if user management page elements are present
     expect(screen.getByText(/User Management/i)).toBeInTheDocument();
     expect(screen.getByText(/Create New User/i)).toBeInTheDocument();
   });
