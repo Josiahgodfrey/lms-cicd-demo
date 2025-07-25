@@ -1,0 +1,34 @@
+{
+  "name": "lms-cicd-demo",
+  "version": "1.0.0",
+  "description": "Learning Management System with CI/CD Pipeline and Docker",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "start:linux": "./scripts/start-linux.sh",
+    "start:windows": "scripts\\start-windows.bat",
+    "start:frontend:linux": "./scripts/start-frontend-linux.sh",
+    "start:frontend:windows": "scripts\\start-frontend-windows.bat",
+    "install:all": "npm install && cd frontend && npm install && cd ..",
+    "build:all": "npm run build && cd frontend && npm run build && cd ..",
+    "test:all": "npm test && cd frontend && npm test -- --run && cd .."
+  },
+  "keywords": ["lms", "learning", "management", "system", "cicd", "docker"],
+  "author": "josiahgodfrey",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
