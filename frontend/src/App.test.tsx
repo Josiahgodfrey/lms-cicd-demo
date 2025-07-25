@@ -35,9 +35,7 @@ vi.mock('axios', () => ({
 describe('App Component', () => {
   it('renders the LMS application', () => {
     render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
+     <App />
     )
     
     // Check if the navigation is rendered
@@ -46,9 +44,7 @@ describe('App Component', () => {
 
   it('renders navigation links', () => {
     render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
+      <App />
     )
     
     // Check if navigation links are present
@@ -58,9 +54,7 @@ describe('App Component', () => {
 
   it('renders footer information', () => {
     render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
+      <App />
     )
     
     // Check if footer is rendered
@@ -71,11 +65,11 @@ describe('App Component', () => {
 
 describe('Dashboard Component', () => {
   it('shows loading state initially', () => {
-    render(
-      <MemoryRouter initialEntries={['/']}>
-        <App />
-      </MemoryRouter>
-    )
+    render(<App />);
+    // Check for loading message
+    expect(screen.getByText(/Loading LMS Data/i)).toBeInTheDocument();
+  });
+});
     
     // Check for loading message
     expect(screen.getByText(/Loading LMS Data/i)).toBeInTheDocument()
@@ -84,14 +78,9 @@ describe('Dashboard Component', () => {
 
 describe('User Management Component', () => {
   it('renders user creation form when navigating to /users', () => {
-    render(
-      <MemoryRouter initialEntries={['/users']}>
-        <App />
-      </MemoryRouter>
-    )
-    
+    render(<App />);
     // Check if user management page elements are present
-    expect(screen.getByText(/User Management/i)).toBeInTheDocument()
-    expect(screen.getByText(/Create New User/i)).toBeInTheDocument()
-  })
-})
+    expect(screen.getByText(/User Management/i)).toBeInTheDocument();
+    expect(screen.getByText(/Create New User/i)).toBeInTheDocument();
+  });
+});
